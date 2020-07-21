@@ -61,7 +61,7 @@ int main(void)
         hangmanOutput[i] = '_';
         hangmanOutput[length] = '\0';
     }
-
+    
     for (i = 0; i < length; i++)
     {
         printf(" ");
@@ -100,13 +100,14 @@ int main(void)
             {
                 for (counter = 0; counter < length; counter++)
                 {
-                    matchFound = 0;
+                    //matchFound = 0;
                     if (alphabetFromUser == hangmanWord[counter])
                     {
                         position = counter;
-                        matchFound = 1;
+			hangmanOutput[counter] = alphabetFromUser;
+                        //matchFound = 1;
                     } //end of if
-                    if (matchFound == 1)
+                    /*if (matchFound == 1)
                     {
                         CLEAR_SCREEN;
                         for (i = 0; i < length; i++)
@@ -125,9 +126,9 @@ int main(void)
                             }
                         }
                         tempWord[position] = alphabetFromUser;
-                        tempWord[length] = '\0';
-                        winner = strcmp(tempWord, hangmanWord);
-
+                        tempWord[length] = '\0';*/
+                        winner = strcmp(hangmanOutput, hangmanWord);
+			//winner = strcmp(tempWord, hangmanWord);
                         if (winner == 0)
                         {
                             CLEAR_SCREEN;
@@ -137,7 +138,7 @@ int main(void)
                             getchar();
                             return 0;
                         }
-                    }
+                   // }
                 }
             }
         }
